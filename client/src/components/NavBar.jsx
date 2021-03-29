@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-
 import Logo from './Logo'
 import Links from './Links'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const Container = styled.div.attrs({
     className: 'container',
@@ -23,6 +24,7 @@ class NavBar extends Component {
                 <Nav>
                     <Logo />
                     <Links />
+                    <Button variant="contained" color="secondary" style={{maxWidth: '100px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}} onClick={this.props.handleLogout}>Logout</Button>
                 </Nav>
             </Container>
         )

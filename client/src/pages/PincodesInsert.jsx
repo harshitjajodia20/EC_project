@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import api from '../api'
-
+import Button from '@material-ui/core/Button';
 //time -> quantity rating->price
 
 import styled from 'styled-components'
@@ -25,11 +25,11 @@ const InputText = styled.input.attrs({
     margin: 5px;
 `
 
-const Button = styled.button.attrs({
-    className: `btn btn-primary`,
-})`
-    margin: 15px 15px 15px 5px;
-`
+// const Button = styled.button.attrs({
+//     className: `btn btn-primary`,
+// })`
+//     margin: 15px 15px 15px 5px;
+// `
 
 const CancelButton = styled.a.attrs({
     className: `btn btn-danger`,
@@ -109,7 +109,7 @@ class PincodesInsert extends Component {
                     onChange={this.handleChangeInputQuantity}
                 />
 
-                <Button onClick={this.handleIncludePincode}>Add Item</Button>
+                <Button variant="contained" color="primary" style={{maxWidth: '100px', maxHeight: '50px', minWidth: '30px', minHeight: '30px'}} onClick={this.props.handleLogout} onClick={this.handleIncludePincode} >Add Item</Button>
                 <CancelButton href={'/pincodes/list'}>Cancel</CancelButton>
             </Wrapper>
         )
