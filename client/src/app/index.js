@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import { NavBar } from '../components'
+import { NavBar, StickyFooter } from '../components'
 import { PincodesList, PincodesInsert, PincodesUpdate } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -97,6 +97,7 @@ function App() {
                     component={PincodesUpdate}
                 />
             </Switch>
+            <StickyFooter/>
         </Router>
         ) : (
             <Login

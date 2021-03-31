@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import 'react-table/react-table.css'
 
 const Wrapper = styled.div`
-    padding: 0 40px 40px 40px;
+    padding: 0 70px 70px 70px;
 `
 
 const Update = styled.div`
@@ -76,11 +76,11 @@ class PincodesList extends Component {
         const { pincodes, isLoading } = this.state
 
         const columns = [
-            {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
-            },
+            // {
+            //     Header: 'ID',
+            //     accessor: '_id',
+            //     filterable: true,
+            // },
             {
                 Header: 'Name',
                 accessor: 'name',
@@ -89,16 +89,22 @@ class PincodesList extends Component {
             {
                 Header: 'Price',
                 accessor: 'price',
-                filterable: true,
+                filterable: false,
             },
             {
                 Header: 'Quantity',
                 accessor: 'quantity',
+                filterable: false,
+               // Cell: props => <span>{props.value.join(' / ')}</span>,
+            },
+            {
+                Header: 'Phone',
+                accessor: 'phone',
                 filterable: true,
                // Cell: props => <span>{props.value.join(' / ')}</span>,
             },
             {
-                Header: '',
+                Header: 'Delete',
                 accessor: '',
                 Cell: function(props) {
                     return (
@@ -109,7 +115,7 @@ class PincodesList extends Component {
                 },
             },
             {
-                Header: '',
+                Header: 'Update',
                 accessor: '',
                 Cell: function(props) {
                     return (

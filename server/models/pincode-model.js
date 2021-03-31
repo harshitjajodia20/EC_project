@@ -5,7 +5,8 @@ const Pincode = new Schema(
     {
         name: { type: String, required: true },
         quantity: { type: Number, required: true },
-        price: { type: Number, required: false },
+        price: { type: Number, required: true },
+        phone: {type: Number, required: true}
     },
     { timestamps: true },
 )

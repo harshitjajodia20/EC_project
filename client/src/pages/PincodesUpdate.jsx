@@ -3,14 +3,22 @@ import api from '../api'
 
 import styled from 'styled-components'
 
+
+
 const Title = styled.h1.attrs({
     className: 'h1',
-})``
+})`
+`
 
 const Wrapper = styled.div.attrs({
     className: 'form-group',
 })`
-    margin: 0 30px;
+    textAlign: center;
+    padding-left: 500px;
+    padding-right:50px;
+    width:1200px;
+    display: 'flex';
+    justify:'center';
 `
 
 const Label = styled.label`
@@ -44,6 +52,7 @@ class PincodesUpdate extends Component {
             name: '',
             price: '',
             quantity: '',
+            phone:'',
         }
     }
 
@@ -65,9 +74,14 @@ class PincodesUpdate extends Component {
         this.setState({ quantity })
     }
 
+    handleChangeInputPhone = async event => {
+        const phone = event.target.value
+        this.setState({ phone })
+    }
+
     handleUpdatePincode = async () => {
-        const { id, name, price, quantity } = this.state
-        const payload = { name, price, quantity }
+        const { id, name, price, quantity,phone } = this.state
+        const payload = { name, price, quantity,phone }
 
         await api.updatePincodeById(id, payload).then(res => {
             window.alert(`Pincode updated successfully`)
@@ -75,6 +89,7 @@ class PincodesUpdate extends Component {
                 name: '',
                 price: '',
                 quantity: '',
+                phone:'',
             })
         })
     }
@@ -87,14 +102,15 @@ class PincodesUpdate extends Component {
             name: pincode.data.data.name,
             price: pincode.data.data.price,
             quantity: pincode.data.data.quantity,
+            phone: pincode.data.data.phone,
         })
     }
 
     render() {
-        const { name, price, quantity } = this.state
+        const { name, price, quantity,phone } = this.state
         return (
-            <Wrapper>
-                <Title>Update Item</Title>
+            <Wrapper >
+                <Title style = {{ textAlign:'center', }}>Update Item</Title>
 
                 <Label>Name: </Label>
                 <InputText
@@ -117,8 +133,17 @@ class PincodesUpdate extends Component {
                     onChange={this.handleChangeInputQuantity}
                 />
 
-                <Button onClick={this.handleUpdatePincode}>Update Item</Button>
-                <CancelButton href={'/movies/list'}>Cancel</CancelButton>
+<Label>Phone Number: </Label>
+                <InputText
+                    type="number"
+                    value={phone}
+                    onChange={this.handleChangeInputphone}
+                />
+                <div style = {{ textAlign:'center', }}>
+                <Button  variant="contained" color="primary" style={{maxWidth: '100px', maxHeight: '70px', minWidth: '30px', minHeight: '30px'}} onClick={this.handleUpdatePincode}>Update Item</Button>
+                <CancelButton href={'/movies/list'} style={{maxWidth: '100px', maxHeight: '70px', minWidth: '30px', minHeight: '30px'}}>Cancel</CancelButton>
+                </div>
+                
             </Wrapper>
         )
     }

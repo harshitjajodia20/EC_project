@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
 import api from '../api'
 import Button from '@material-ui/core/Button';
-//time -> quantity rating->price
 
 import styled from 'styled-components'
 
 const Title = styled.h1.attrs({
     className: 'h1',
-})``
+})`
+padding-left:180px;
+`
 
 const Wrapper = styled.div.attrs({
     className: 'form-group',
 })`
-    margin: 0 30px;
+    textAlign: center;
+    padding-left: 500px;
+    padding-right:50px;
+    width:1200px;
+    display: 'flex';
+    justify:'center';
 `
 
 const Label = styled.label`
@@ -35,6 +41,7 @@ const CancelButton = styled.a.attrs({
     className: `btn btn-danger`,
 })`
     margin: 15px 15px 15px 5px;
+    paddingLeft:100px;
 `
 
 class PincodesInsert extends Component {
@@ -65,12 +72,16 @@ class PincodesInsert extends Component {
         const quantity = event.target.value
         this.setState({ quantity })
     }
+    handleChangeInputPhone = async event => {
+        const phone = event.target.value
+        this.setState({ phone })
+    }
 
 
 
     handleIncludePincode = async () => {
-        const { name, price, quantity } = this.state
-        const payload = { name, price, quantity }
+        const { name, price, quantity,phone } = this.state
+        const payload = { name, price, quantity,phone }
 
         await api.insertPincode(payload).then(res => {
             window.alert(`Pincode inserted successfully`)
@@ -78,15 +89,16 @@ class PincodesInsert extends Component {
                 name: '',
                 price: '',
                 quantity: '',
+                phone:'',
             })
         })
     }
 
     render() {
-        const { name, price, quantity } = this.state
+        const { name, price, quantity,phone } = this.state
         return (
             <Wrapper>
-                <Title>Add Items</Title>
+                <Title >Add Items</Title>
 
                 <Label>Name: </Label>
                 <InputText
@@ -108,9 +120,15 @@ class PincodesInsert extends Component {
                     value={quantity}
                     onChange={this.handleChangeInputQuantity}
                 />
+                 <Label>Phone Number: </Label>
+                <InputText
+                    type="number"
+                    value={phone}
+                    onChange={this.handleChangeInputPhone}
+                />
 
                 <Button variant="contained" color="primary" style={{maxWidth: '100px', maxHeight: '50px', minWidth: '30px', minHeight: '30px'}} onClick={this.props.handleLogout} onClick={this.handleIncludePincode} >Add Item</Button>
-                <CancelButton href={'/pincodes/list'}>Cancel</CancelButton>
+                <CancelButton href={'/pincodes/list'} variant="contained" color="primary" style={{maxWidth: '100px', maxHeight: '50px', minWidth: '30px', minHeight: '30px'}}>Cancel</CancelButton>
             </Wrapper>
         )
     }

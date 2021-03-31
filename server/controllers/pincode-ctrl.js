@@ -53,6 +53,7 @@ updatePincode= async (req, res) => {
         pincode.name = body.name
         pincode.quantity = body.quantity
         pincode.price= body.price
+        pincode.phone=body.phone
         pincode
             .save()
             .then(() => {
