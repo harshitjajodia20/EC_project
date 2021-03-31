@@ -73,7 +73,7 @@ class PincodesInsert extends Component {
         const payload = { name, price, quantity }
 
         await api.insertPincode(payload).then(res => {
-            window.alert(`Pincode inserted successfully`)
+            window.alert(`Details inserted successfully`)
             this.setState({
                 name: '',
                 price: '',
@@ -109,7 +109,7 @@ class PincodesInsert extends Component {
                     onChange={this.handleChangeInputQuantity}
                 />
 
-                <Button variant="contained" color="primary" style={{maxWidth: '100px', maxHeight: '50px', minWidth: '30px', minHeight: '30px'}} onClick={this.props.handleLogout} onClick={this.handleIncludePincode} >Add Item</Button>
+                <Button variant="contained" color="primary" style={{maxWidth: '100px', maxHeight: '50px', minWidth: '30px', minHeight: '30px'}}  onClick={this.handleIncludePincode} >Add Item</Button>
                 <CancelButton href={'/pincodes/list'}>Cancel</CancelButton>
             </Wrapper>
         )

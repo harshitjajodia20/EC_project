@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import api from '../api'
-
+import Button from '@material-ui/core/Button';
 import styled from 'styled-components'
 
 const Title = styled.h1.attrs({
@@ -23,11 +23,11 @@ const InputText = styled.input.attrs({
     margin: 5px;
 `
 
-const Button = styled.button.attrs({
-    className: `btn btn-primary`,
-})`
-    margin: 15px 15px 15px 5px;
-`
+// const Button = styled.button.attrs({
+//     className: `btn btn-primary`,
+// })`
+//     margin: 15px 15px 15px 5px;
+// `
 
 const CancelButton = styled.a.attrs({
     className: `btn btn-danger`,
@@ -70,7 +70,7 @@ class PincodesUpdate extends Component {
         const payload = { name, price, quantity }
 
         await api.updatePincodeById(id, payload).then(res => {
-            window.alert(`Pincode updated successfully`)
+            window.alert(`Update successfull`)
             this.setState({
                 name: '',
                 price: '',
@@ -117,7 +117,7 @@ class PincodesUpdate extends Component {
                     onChange={this.handleChangeInputQuantity}
                 />
 
-                <Button onClick={this.handleUpdatePincode}>Update Item</Button>
+                <Button variant="contained" color="primary" style={{maxWidth: '100px', maxHeight: '50px', minWidth: '30px', minHeight: '30px'}} onClick={this.handleUpdatePincode}>Update Item</Button>
                 <CancelButton href={'/movies/list'}>Cancel</CancelButton>
             </Wrapper>
         )

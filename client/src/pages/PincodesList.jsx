@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
 import api from '../api'
+import Search from "./Search"
 
 import styled from 'styled-components'
 
 import 'react-table/react-table.css'
-
+import SearchIcon from '@material-ui/icons/Search';
+import DeleteIcon from '@material-ui/icons/Delete';
+import UpdateIcon from '@material-ui/icons/Update';
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `
@@ -28,7 +31,7 @@ class UpdatePincode extends Component {
     }
 
     render() {
-        return <Update onClick={this.updateUser}>Update</Update>
+        return <Update onClick={this.updateUser}><UpdateIcon /></Update>
     }
 }
 
@@ -42,12 +45,13 @@ class DeletePincode extends Component {
             )
         ) {
             api.deletePincodeById(this.props.id)
+            event.preventDefault()
             window.location.reload()
         }
     }
 
     render() {
-        return <Delete onClick={this.deleteUser}>Delete</Delete>
+        return <Delete onClick={this.deleteUser}><DeleteIcon /></Delete>
     }
 }
 
@@ -74,31 +78,88 @@ class PincodesList extends Component {
 
     render() {
         const { pincodes, isLoading } = this.state
-
+        
         const columns = [
+            // {
+            //     Header: 'ID',
+            //     accessor: '_id',
+            //     filterable: false,
+            // },
             {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
-            },
-            {
-                Header: 'Name',
+                Header: 'Search by Name',
                 accessor: 'name',
-                filterable: true,
+              //  filterable: true,
+              Filter: ({filter, onChange}) => {
+                return (
+                      <div style={{position: 'relative'}}>
+                       
+                        <SearchIcon />
+                     
+                      <input
+                        onChange={event => onChange(event.target.value)}
+                        value={filter ? filter.value : ''}
+                        style={{
+                          width: '100%',
+                          backgroundColor: '#F0F8FF',
+                          color: '#222222',
+                        }}
+                      />
+                     
+                    </div>
+                )
+                    }
             },
             {
-                Header: 'Price',
+                Header: 'Search by Price',
                 accessor: 'price',
-                filterable: true,
+               // filterable: true,
+               Filter: ({filter, onChange}) => {
+                return (
+                      <div style={{position: 'relative'}}>
+                       
+                        <SearchIcon />
+                     
+                      <input
+                        onChange={event => onChange(event.target.value)}
+                        value={filter ? filter.value : ''}
+                        style={{
+                          width: '100%',
+                          backgroundColor: '#F0F8FF',
+                          color: '#222222',
+                        }}
+                      />
+                     
+                    </div>
+                )
+                    }
             },
             {
                 Header: 'Quantity',
                 accessor: 'quantity',
-                filterable: true,
+                filterable: false,
+               Filter: ({filter, onChange}) => {
+                return (
+                      <div style={{position: 'relative'}}>
+                       
+                        <SearchIcon />
+                     <label></label>
+                      <input
+                        onChange={event => onChange(event.target.value)}
+                        value={filter ? filter.value : ''}
+                        style={{
+                          width: '100%',
+                          backgroundColor: '#F0F8FF',
+                          color: '#222222',
+                        }}
+                      />
+                     
+                    </div>
+                )
+                    }
                // Cell: props => <span>{props.value.join(' / ')}</span>,
             },
             {
-                Header: '',
+                Header: 'Delete',
                 accessor: '',
                 Cell: function(props) {
                     return (
@@ -107,9 +168,10 @@ class PincodesList extends Component {
                         </span>
                     )
                 },
+                filterable:false
             },
             {
-                Header: '',
+                Header: 'Update',
                 accessor: '',
                 Cell: function(props) {
                     return (
@@ -118,6 +180,7 @@ class PincodesList extends Component {
                         </span>
                     )
                 },
+                filterable:false
             },
         ]
 
@@ -126,10 +189,13 @@ class PincodesList extends Component {
             showTable = false
         }
 
-        return (
+        return ( 
+            
             <Wrapper>
+         
                 {showTable && (
                     <ReactTable
+                        filterable
                         data={pincodes}
                         columns={columns}
                         loading={isLoading}
