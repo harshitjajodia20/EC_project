@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { NavBar, StickyFooter } from '../components'
-import { PincodesList, PincodesInsert, PincodesUpdate } from '../pages'
+import { PincodesList, PincodesInsert, PincodesUpdate, Home } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import fire from "./fire";
@@ -89,6 +89,7 @@ function App() {
             <Router>
             <NavBar handleLogout={handleLogout}/>
             <Switch>
+                <Route path="/" exact component={Home} />
                 <Route path="/pincodes/list" exact component={PincodesList} />
                 <Route path="/pincodes/create" exact component={PincodesInsert} />
                 <Route
