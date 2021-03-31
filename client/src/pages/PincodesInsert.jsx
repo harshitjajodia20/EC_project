@@ -7,7 +7,6 @@ import styled from 'styled-components'
 const Title = styled.h1.attrs({
     className: 'h1',
 })`
-padding-left:180px;
 `
 
 const Wrapper = styled.div.attrs({
@@ -98,7 +97,7 @@ class PincodesInsert extends Component {
         const { name, price, quantity,phone } = this.state
         return (
             <Wrapper>
-                <Title >Add Items</Title>
+                <Title style = {{ textAlign:'center', }} >Add Items</Title>
 
                 <Label>Name: </Label>
                 <InputText
@@ -126,9 +125,10 @@ class PincodesInsert extends Component {
                     value={phone}
                     onChange={this.handleChangeInputPhone}
                 />
-
+                 <div style = {{ textAlign:'center', }}>
                 <Button variant="contained" color="primary" style={{maxWidth: '100px', maxHeight: '50px', minWidth: '30px', minHeight: '30px'}} onClick={this.props.handleLogout} onClick={this.handleIncludePincode} >Add Item</Button>
                 <CancelButton href={'/pincodes/list'} variant="contained" color="primary" style={{maxWidth: '100px', maxHeight: '50px', minWidth: '30px', minHeight: '30px'}}>Cancel</CancelButton>
+                </div>
             </Wrapper>
         )
     }
