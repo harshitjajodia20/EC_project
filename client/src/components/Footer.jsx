@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     left: '0px',
     right: '0px',
     marginBottom: '0px',
-    backgroundColor:"#e4fbff"
+    backgroundColor:"#e3f6f5"
   },
 }));
 
@@ -48,7 +48,7 @@ export default function StickyFooter() {
     <div className={classes.root}>
       <footer className={classes.footer}>
         <Container maxWidth="sm">
-          <Typography variant="body1">My sticky footer can be found here.</Typography>
+          <Typography variant="body1" color="white">My sticky footer can be found here.</Typography>
           <Copyright />
         </Container>
       </footer>

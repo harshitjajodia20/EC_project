@@ -11,6 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import UpdateIcon from '@material-ui/icons/Update';
 
 const Wrapper = styled.div`
+margin-top:100px;
     padding: 0 70px 70px 70px;
 `
 

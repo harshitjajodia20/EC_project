@@ -19,7 +19,7 @@ height: 80px;
 // padding: 0 50px;
 // max-width: 1500px;
 width: 100%;
-margin-bottom:100px;
+// margin-bottom:100px;
 
 
 // @media (max-width:400px){
@@ -53,7 +53,8 @@ justify-content: center;
 align-items: center;
 
 width:100%;
-background:#e4fbff;
+background:#e3f6f5;
+// 2b2b28;
     margin-bottom: 0 em;
     padding:0 em;
 `

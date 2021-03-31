@@ -7,6 +7,7 @@ import styled from 'styled-components'
 const Title = styled.h1.attrs({
     className: 'h1',
 })`
+margin-top:100px;
 `
 
 const Wrapper = styled.div.attrs({
