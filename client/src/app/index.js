@@ -64,9 +64,15 @@ function App() {
         }
       });
   };
+  
 
   const handleLogout = () => {
-    fire.auth().signOut();
+    
+    return (
+        fire.auth().signOut(),
+        window.location.assign("http://127.0.0.1:5500/index.html#features-section")
+    )
+   
   };
 
   const authListener = () => {
