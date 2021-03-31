@@ -9,9 +9,9 @@ import Link from '@material-ui/core/Link';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary">
-      {'Copyright © '}
+      {'Copyright © Firing Guns '}
       <Link color="inherit" href="\">
-        Your Website
+       
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -48,7 +48,7 @@ export default function StickyFooter() {
     <div className={classes.root}>
       <footer className={classes.footer}>
         <Container maxWidth="sm">
-          <Typography variant="body1" color="white">My sticky footer can be found here.</Typography>
+          <Typography variant="body1" color="white">Developed by: Harshil Singhal, Harshit Jajodia, Madhur Bhattad</Typography>
           <Copyright />
         </Container>
       </footer>

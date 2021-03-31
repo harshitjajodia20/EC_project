@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { NavBar, StickyFooter } from '../components'
-import { PincodesList, PincodesInsert, PincodesUpdate , Home } from '../pages'
+import { PincodesList, PincodesInsert, PincodesUpdate , Home, Nutrients } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import fire from "./fire";
@@ -97,6 +97,7 @@ function App() {
                     exact
                     component={PincodesUpdate}
                 />
+                <Route path="/nutrients" exact component={Nutrients}/>
             </Switch>
             <StickyFooter/>
         </Router>
